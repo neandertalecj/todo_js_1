@@ -7,7 +7,13 @@
 		<form name="form">
 			<label>Tasck</label>
 			<select name="day" id="">
-				<option>Monday</option>
+				<option>Понеділок</option>
+				<option>Вівторок</option>
+				<option>Середа</option>
+				<option>Четвер</option>
+				<option>Пятниця</option>
+				<option>Субота</option>
+				<option>Неділя</option>
 			</select><br>
 			<textarea name="text" id="" cols="30" rows="10"></textarea><br>
 			<input type="button" value="Enter" onClick="btnEnter()">
@@ -17,18 +23,21 @@
 	</body>
 	<script>
 		var arr=[],
+		days = [],
 		Tex ='',
 		forma = document.form;
 
 		function btnEnter(){
 			var text = forma.text.value;
+			var day = forma.day.value;
 			arr.push(text);
+			days.push(day);
 			// alert(text);
 			document.form.reset();
 		}
 		function pr(){
 			arr.forEach(function(iteam, i, arr){
-				 Tex += '<li>'+iteam +" "+ "<button id='a"+ i +"'type='button'>x</button>" + '</li>';
+				 Tex += '<li>'+days[i]+ ": " +iteam +" "+ "<button id='a"+ i +"'type='button'>x</button>" + '</li>';
 				document.getElementById('listTasck').innerHTML = Tex;
 			});
 
@@ -37,6 +46,7 @@
 				for(var j=0; j<li.length; j++){
 					li[j].onclick=function(){
 						arr.splice(li[j], 1);
+						days.splice(li[j], 1);
 					}
 				}
 		}//End pr f.
