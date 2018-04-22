@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>manager</title>
+	</head>
+	<body>
+		<form name="form">
+			<label>Tasck</label>
+			<select name="day" id="">
+				<option>Monday</option>
+			</select><br>
+			<textarea name="text" id="" cols="30" rows="10"></textarea><br>
+			<input type="button" value="Enter" onClick="btnEnter()">
+			<input type="button" value="Print" onClick="pr()">
+		</form>
+		<ol id="listTasck"></ol>
+	</body>
+	<script>
+		var arr=[],
+		Tex ='',
+		forma = document.form;
+
+		function btnEnter(){
+			var text = forma.text.value;
+			arr.push(text);
+			// alert(text);
+			document.form.reset();
+		}
+		function pr(){
+			arr.forEach(function(iteam, i, arr){
+				 Tex += '<li>'+iteam +" "+ "<button id='a"+ i +"'type='button'>x</button>" + '</li>';
+				document.getElementById('listTasck').innerHTML = Tex;
+			});
+
+			var li = document.querySelectorAll('LI');
+				console.log(li);
+				for(var j=0; j<li.length; j++){
+					li[j].onclick=function(){
+						arr.splice(li[j], 1);
+					}
+				}
+		}//End pr f.
+
+
+	</script>
+</html>
