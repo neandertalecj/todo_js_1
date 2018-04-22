@@ -45,8 +45,9 @@
 				console.log(li);
 				for(var j=0; j<li.length; j++){
 					li[j].onclick=function(){
-						arr.splice(li[j], 1);
-						days.splice(li[j], 1);
+						arr.splice(this, 1);//li[j]
+						days.splice(this, 1);
+						this.remove();
 					}
 				}
 		}//End pr f.
